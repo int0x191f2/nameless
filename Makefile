@@ -6,7 +6,7 @@ OBJECTS=$(SOURCES:.cpp=.o)
 WPILIB=/var/frc/wpilib/
 EXEC=bin/FRCUserProgram
 CLEANSER=rm -r
-
+REMOTEIP=10.0.1.31
 
 all : $(OBJECTS)
 	$(CC) -L$(WPILIB)/lib $(LDFLAGS) -o $(EXEC) $(OBJECTS) -lwpi
@@ -16,3 +16,8 @@ all : $(OBJECTS)
 
 clean:
 	$(CLEANSER) $(OBJECTS)
+
+deploy:
+	@ssh admin@$(REMOTEIP) rm /home/lvuser/FRCUserProgram
+	@scp bin/FRCUserProgram admin@$(REMOTEIP)
+	@ssh admin@$(REMOTEIP) /etc/profile.d/natinst-path.sh; chmod a+x /home/lvuser/FRCUserProgram; /usr/local/frc/bin/frcKillRobot.sh -t -r;
