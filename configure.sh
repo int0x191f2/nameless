@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ ! -a Makefile ] ;then
+    echo ">>Fetching the Makefile"
+    curl https://raw.githubusercontent.com/int0x191f2/nameless/master/Makefile -o Makefile
+fi
+
 if [ ! -d bin/ ] ;then
     echo ">> Lack of bins. Making a bin for you"
     mkdir bin/
