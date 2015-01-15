@@ -4,12 +4,10 @@ This project aims to eliminate the need for Eclipse to compile code for FRC (Fir
 # Install
 Installation only requires git and make being installed on a POSIX/GNU machine.
 
-Simply clone the latest copy of master into the src/ directory of your existing eclipse project, copy everything up a directory, and run configure.sh.
+Simply curl the configure script into the src/ directory of your existing eclipse project and run it
 ```sh
 cd ~/workspace/tmp/src
-git clone https://github.com/int0x191f2/nameless.git a && mv a/{configure.sh,Makefile} . && rm -rf a
-git
-./configure.sh
+curl https://raw.githubusercontent.com/int0x191f2/nameless/master/configure.sh | sh
 ```
 # Usage
 Run make in <project>/src to create the FRCUserProgram in bin/
