@@ -19,7 +19,7 @@ clean:
 
 deploy:
 	@ssh -v admin@$(REMOTEIP) "rm /home/lvuser/FRCUserProgram"
-	@scp bin/FRCUserProgram admin@$(REMOTEIP)
+@scp bin/FRCUserProgram admin@$(REMOTEIP):/home/lvuser/
 	@ssh -v admin@$(REMOTEIP) "/etc/profile.d/natinst-path.sh; chmod a+x /home/lvuser/FRCUserProgram; /usr/local/frc/bin/frcKillRobot.sh -t -r"
 
 putkey:
