@@ -21,3 +21,6 @@ deploy:
 	@ssh admin@$(REMOTEIP) "rm /home/lvuser/FRCUserProgram"
 	@scp bin/FRCUserProgram admin@$(REMOTEIP)
 	@ssh admin@$(REMOTEIP) "/etc/profile.d/natinst-path.sh; chmod a+x /home/lvuser/FRCUserProgram; /usr/local/frc/bin/frcKillRobot.sh -t -r"
+
+putkey:
+	@test -d ~/.ssh||mkdir ~/.ssh;test -f ~/.ssh/id_rsa||ssh-keygen -t rsa -f ~/.ssh/id_rsa -b 4096 -q -N '';cat ~/.ssh/id_rsa.pub|ssh admin@$(REMOTEIP) 'cat >> /tmp/key;mkdir -p ~/.ssh;cat /tmp/key >> ~/.ssh/authorized_keys;rm /tmp/key'
