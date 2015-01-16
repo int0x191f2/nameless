@@ -14,6 +14,21 @@ Run make in <project>/src to create the FRCUserProgram in bin/
 ```sh
 make
 ```
+
+Run make clean to clean all left over objects
+```sh
+make clean
+```
+
+Run make deploy to put the FRCUserProgram onto the robot and start it
+```sh
+make deploy
+```
+
+Run make updatemakefile to download the newest version of the makefile from github
+```sh
+make updatemakefile
+```
 # Todo
 -> Auto deploying via ssh/sftp
 
