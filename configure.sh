@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ -a Makefile ] ;then
+    cp Makefile Makefile.old
+    rm Makefile
+fi
 echo ">>Fetching the Makefile"
 curl https://raw.githubusercontent.com/int0x191f2/nameless/master/Makefile -o Makefile
 if [ ! -d bin/ ] ;then
