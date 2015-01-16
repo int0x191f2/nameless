@@ -3,7 +3,7 @@ CFLAGS=-std=c++11 -O0 -g3 -Wall -c -fmessage-length=0
 LDFLAGS=-Wl,-rpath,/opt/GenICam_v2_3/bin/Linux_armv7-a
 SOURCES=$(shell find -type f -name "*.cpp")
 OBJECTS=$(SOURCES:.cpp=.o)
-WPILIB=/var/frc/wpilib/
+WPILIB=/var/frc/wpilib
 EXEC=bin/FRCUserProgram
 CLEANSER=rm -r
 REMOTEIP=10.0.1.31
