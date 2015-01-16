@@ -14,8 +14,7 @@ all : $(OBJECTS)
 	$(CC) $(CFLAGS) -I$(WPILIB)/include $^ -o $@
 
 clean:
-	$(CLEANSER) $(OBJECTS)
-	$(CLEANSER) bin/FRCUserProgram
+	$(CLEANSER) $(OBJECTS) bin/FRCUserProgram
 
 deploy:
 	@cat bin/FRCUserProgram | ssh admin@$(REMOTEIP) 'cat > /home/lvuser/FRCUserProgram2&&rm /home/lvuser/FRCUserProgram;mv /home/lvuser/FRCUserProgram2 /home/lvuser/FRCUserProgram&&. /etc/profile.d/natinst-path.sh;chmod a+x /home/lvuser/FRCUserProgram;/usr/local/frc/bin/frcKillRobot.sh -t -r'
