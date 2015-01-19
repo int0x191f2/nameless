@@ -7,7 +7,7 @@ Installation only requires git and make being installed on a POSIX/GNU machine.
 Simply curl the configure script into the src/ directory of your existing eclipse project and run it
 ```sh
 cd ~/workspace/tmp/src
-curl https://raw.githubusercontent.com/int0x191f2/nameless/master/configure.sh | sh
+curl https://raw.githubusercontent.com/int0x191f2/nameless/master/Makefile -o Makefile
 ```
 # Usage
 Run make in <project>/src to create the FRCUserProgram in bin/
