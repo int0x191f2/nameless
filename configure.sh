@@ -41,7 +41,10 @@ if [ ! -a /usr/bin/arm-frc-linux-gnueabi-g++ ] ;then
         cd toolchain-builder/tools && sudo make -f frcmake-nix-makefile install
         cd ~/frctoolchain/ && wget ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.9.1/gcc-4.9.1.tar.bz2
         tar -xvjf gcc-4.9.1.tar.bz2
-        cd gcc-4.9.1 && mkdir gcc-build  && cd gcc-build
+        cd gcc-4.9.1
+        curl https://raw.githubusercontent.com/int0x191f2/nameless/master/minorSOname.patch -o a.patch
+        patch -p1 < a.patch
+        mkdir gcc-build  && cd gcc-build
         ../configure \
             --prefix=/usr \
             --program-prefix=arm-frc-linux-gnueabi- \
