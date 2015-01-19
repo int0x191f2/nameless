@@ -30,8 +30,4 @@ Run make updatemakefile to download the newest version of the makefile from gith
 make updatemakefile
 ```
 # Todo
--> Auto deploying via ssh/sftp
-
--> More robust configuration file
-
 -> Auto downloading/building of the frc toolchain

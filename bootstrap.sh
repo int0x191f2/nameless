@@ -17,20 +17,20 @@ if [ ! -d /var/frc/wpilib/ ] ;then
     git clone https://github.com/stonewareslord/wpilib.git /var/frc/wpilib
 fi
 
-#if [ ! -a /usr/local/include/WPILib.h ] ;then
-#    if [ $(which cmake) ] ;then
-#        echo ">>Complete WPILib library not found. Building..."
-#        git clone https://usfirst.collab.net/gerrit/allwpilib /tmp/allwpilib
-#        cd /tmp/allwpilib && mkdir build && cd build
-#        cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-toolchain.cmake
-#        make
-#        echo "*****************************************"
-#        echo ">>Root is required to install the library"
-#        echo "*****************************************"
-#        cd /tmp/allwpilib/build && sudo make install
-#        sudo rm -r /tmp/allwpilib/
-#    fi
-#fi
+if [ ! -a /usr/local/include/WPILib.h ] ;then
+    if [ $(which cmake) ] ;then
+        echo ">>Complete WPILib library not found. Building..."
+        git clone https://usfirst.collab.net/gerrit/allwpilib /tmp/allwpilib
+        cd /tmp/allwpilib && mkdir build && cd build
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-toolchain.cmake
+        make
+        echo "*****************************************"
+        echo ">>Root is required to install the library"
+        echo "*****************************************"
+        cd /tmp/allwpilib/build && sudo make install
+        sudo rm -r /tmp/allwpilib/
+    fi
+fi
 
 if [ ! -a /usr/bin/arm-frc-linux-gnueabi-g++ ] ;then
     if [ $(which hg) ] && [ $(which cmake) ] && [ $(which wget) ];then
