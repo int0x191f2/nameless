@@ -61,8 +61,8 @@ if [ ! -a /usr/bin/arm-frc-linux-gnueabi-g++ ] ;then
         clear && sleep 1 
         echo ">>Initalizing build of gcc"
         sleep 1 && clear
-        make all-gcc all-target-libstdc++-v3
-        sudo make install-gcc install-target-libgcc install-target-libstdc++-v3
+        make all-gcc all-target-libstdc++-v3 | tee /tmp/frcinstall.log
+        sudo make install-gcc install-target-libgcc install-target-libstdc++-v3 | tee /tmp/frcinstall.log
         clear && sleep 1
         echo ">>Installing arm-frc-linux-gnuabi-binutils"
         sleep 1 && clear
@@ -78,9 +78,9 @@ if [ ! -a /usr/bin/arm-frc-linux-gnueabi-g++ ] ;then
             --enable-lto \
             --disable-libiberty-install \
             --disable-werror
-        make configure-host
-        make
-        sudo make install
+        make configure-host | tee /tmp/frcinstall.log
+        make | tee /tmp/frcinstall.log
+        sudo make install | tee /tmp/frcinstall.log
     else
         echo ">>Please install cmake and hg"
     fi
@@ -90,8 +90,8 @@ if [ ! -a /usr/local/include/WPILib.h ] ;then
         echo ">>Complete WPILib library not found. Building..."
         git clone https://usfirst.collab.net/gerrit/allwpilib /tmp/allwpilib
         cd /tmp/allwpilib && mkdir build && cd build
-        cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-toolchain.cmake
-        make
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=../arm-toolchain.cmake | tee /tmp/frcinstall.log
+        make | tee /tmp/frcinstall.log
         echo "*****************************************"
         echo ">>Root is required to install the library"
         echo "*****************************************"
