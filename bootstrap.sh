@@ -58,11 +58,12 @@ if [ ! -a /usr/bin/arm-frc-linux-gnueabi-g++ ] ;then
            --enable-plugin \
             --with-system-zlib \
             --disable-libmudflap
+        cd ..
         clear && sleep 1 
         echo ">>Initalizing build of gcc"
         sleep 1 && clear
-        make all-gcc all-target-libstdc++-v3 | tee /tmp/frcinstall.log
-        sudo make install-gcc install-target-libgcc install-target-libstdc++-v3 | tee /tmp/frcinstall.log
+        make
+        sudo make install
         clear && sleep 1
         echo ">>Installing arm-frc-linux-gnuabi-binutils"
         sleep 1 && clear
