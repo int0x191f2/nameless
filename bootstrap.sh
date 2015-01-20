@@ -58,30 +58,29 @@ if [ ! -a /usr/bin/arm-frc-linux-gnueabi-g++ ] ;then
            --enable-plugin \
             --with-system-zlib \
             --disable-libmudflap
-        cd ..
         clear && sleep 1 
         echo ">>Initalizing build of gcc"
         sleep 1 && clear
         make
         sudo make install
-        clear && sleep 1
-        echo ">>Installing arm-frc-linux-gnuabi-binutils"
-        sleep 1 && clear
-        cd ~/frctoolchain && wget ftp://ftp.gnu.org/gnu/binutils/binutils-2.24.tar.bz2 && tar -xvjf binutils-2.24.tar.bz2 && cd binutils-2.24
-        find -name config.cache -exec rm {} \;
-        ./configure \
-            --prefix=/usr \
-            --target=arm-frc-linux-gnueabi \
-            --with-pkgversion='GNU Binutils for FRC' \
-            --with-sysroot=/usr/arm-frc-linux-gnueabi \
-            --disable-multilib \
-            --disable-nls \
-            --enable-lto \
-            --disable-libiberty-install \
-            --disable-werror
-        make configure-host | tee /tmp/frcinstall.log
-        make | tee /tmp/frcinstall.log
-        sudo make install | tee /tmp/frcinstall.log
+        ##clear && sleep 1
+        ##echo ">>Installing arm-frc-linux-gnuabi-binutils"
+        ##sleep 1 && clear
+        ##cd ~/frctoolchain && wget ftp://ftp.gnu.org/gnu/binutils/binutils-2.24.tar.bz2 && tar -xvjf binutils-2.24.tar.bz2 && cd binutils-2.24
+        ##find -name config.cache -exec rm {} \;
+        ##./configure \
+        ##    --prefix=/usr \
+        ##    --target=arm-frc-linux-gnueabi \
+        ##    --with-pkgversion='GNU Binutils for FRC' \
+        ##    --with-sysroot=/usr/arm-frc-linux-gnueabi \
+        ##    --disable-multilib \
+        ##    --disable-nls \
+        ##    --enable-lto \
+        ##    --disable-libiberty-install \
+        ##    --disable-werror
+        ##make configure-host | tee /tmp/frcinstall.log
+        ##make | tee /tmp/frcinstall.log
+        ##sudo make install | tee /tmp/frcinstall.log
     else
         echo ">>Please install cmake and hg"
     fi
